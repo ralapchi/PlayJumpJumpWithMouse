@@ -34,6 +34,12 @@ public class Constants {
      */
     public static final int SCREENSHOT_INTERVAL = 3000; // ms
 
+    public static final int HDPI = 240;
+
+    public static final int XHDPI = 330;
+
+    public static final int XXHDPI = 480;
+
     /**
      * 手动模式
      */

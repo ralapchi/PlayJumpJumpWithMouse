@@ -25,7 +25,7 @@ public class EndCenterFinder {
         int centerX = 0;
         int centerY = 0;
         int height = bufferedImage.getHeight() * 2 / 3;
-        for (int h = 200; h < height && h < startCenterPoint.y; h++) {
+        for (int h = bufferedImage.getHeight() / 3; h < height && h < startCenterPoint.y; h++) {
             for (int w = 0; w < width; w++) {
                 int color = bufferedImage.getRGB(w, h);
                 Color newColor = new Color(color);
@@ -49,7 +49,7 @@ public class EndCenterFinder {
                 }
             }
         }
-        return new Point((int) (centerX * scaleX), (int) ((centerY - 1)));
+        return new Point((int) (centerX * scaleX), JumpPerfectControl.needMis() ? centerY - 10 : centerY - 1);
     }
 
     static Point findWhiteCenter(BufferedImage bufferedImage, int x, int y, Point startCenterPoint) {
@@ -74,7 +74,7 @@ public class EndCenterFinder {
             }
         }
         int centerY = minY + (maxY - minY) / 2;
-        if (maxY - minY < 18) {
+        if (maxY - minY < ScreenAdapter.getMinWhiteHeight()) {
             return null;
         }
         return new Point((int) (maxX * scaleX), (int) ((centerY)));
